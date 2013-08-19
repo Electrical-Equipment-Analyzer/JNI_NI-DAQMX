@@ -8,32 +8,38 @@ package edu.sju.ee98.ni.daqmx;
  *
  * @author Leo
  */
-public class NIAnalogConfig {
+public class NIAnalogConfig implements java.io.Serializable {
 
-    private int voltage;
-    private float rate;
-    private int length;
+    private double minVoltage;
+    private double maxVoltage;
+    private double rate;
+    private long length;
 
-    public NIAnalogConfig(int voltage, float rate, int length) {
-        this.voltage = voltage;
+    public NIAnalogConfig(double minVoltage, double maxVoltage, double rate, long length) {
+        this.minVoltage = minVoltage;
+        this.maxVoltage = maxVoltage;
         this.rate = rate;
         this.length = length;
     }
 
-    public int getVoltage() {
-        return voltage;
+    public double getMinVoltage() {
+        return minVoltage;
     }
 
-    public float getRate() {
+    public double getMaxVoltage() {
+        return maxVoltage;
+    }
+
+    public double getRate() {
         return rate;
     }
 
-    public int getLength() {
+    public long getLength() {
         return length;
     }
 
     @Override
     public String toString() {
-        return "NIAnalogConfig{" + "voltage=" + voltage + ", rate=" + rate + ", length=" + length + '}';
+        return "NIAnalogConfig{" + "minVoltage=" + minVoltage + ", maxVoltage=" + maxVoltage + ", rate=" + rate + ", length=" + length + '}';
     }
 }

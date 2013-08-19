@@ -14,9 +14,15 @@ public class DAQmx {
         System.loadLibrary("libs/libDataAcquisitionNative");
     }
 
+    public DAQmx() {
+    }
+
     public native void print();
 
     public native double[] acqIntClk();
+
+    public  native double[] acqIntClk(double minVoltage, double maxVoltage, double rate, long length);
+
 
     private void callback() {
         System.out.println("In Java");
