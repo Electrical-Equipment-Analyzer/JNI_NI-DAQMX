@@ -46,7 +46,6 @@
           </incDir>
         </cTool>
         <linkerTool>
-          <output>../DataAcquisitionJNI/libs/libDataAcquisitionNative.${CND_DLIB_EXT}</output>
           <linkerAddLib>
             <pElem>lib</pElem>
           </linkerAddLib>

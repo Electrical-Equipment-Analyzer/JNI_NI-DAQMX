@@ -56,11 +56,11 @@ LDLIBSOPTIONS=-Llib -lnicaiu
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../DataAcquisitionJNI/libs/libDataAcquisitionNative.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}
 
-../DataAcquisitionJNI/libs/libDataAcquisitionNative.${CND_DLIB_EXT}: ${OBJECTFILES}
-	${MKDIR} -p ../DataAcquisitionJNI/libs
-	gcc -o ../DataAcquisitionJNI/libs/libDataAcquisitionNative.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}: ${OBJECTFILES}
+	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
+	gcc -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
 
 ${OBJECTDIR}/src/DAQmx.o: src/DAQmx.c 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -73,7 +73,7 @@ ${OBJECTDIR}/src/DAQmx.o: src/DAQmx.c
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ../DataAcquisitionJNI/libs/libDataAcquisitionNative.${CND_DLIB_EXT}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:

@@ -12,7 +12,7 @@ CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=../DataAcquisitionJNI/libs/libDataAcquisitionNative.${CND_DLIB_EXT}
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}
 OUTPUT_BASENAME=libDataAcquisitionNative.${CND_DLIB_EXT}
 PACKAGE_TOP_DIR=libDataAcquisitionNative.dll/
 

@@ -18,18 +18,19 @@ JNIEXPORT void JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_print(JNIEnv *env, jobje
     return;
 }
 
-JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_acqIntClk(JNIEnv *env, jobject obj) {
-    int i;
-    int length = 1000;
-    float64 data[length];
-    acqIntClk(data, -10.0, 10.0, 10000.0, 1000);
-    jdoubleArray doubleArray = (*env)->NewDoubleArray(env, length);
-    (*env)->SetDoubleArrayRegion(env, doubleArray, 0, length, (const jdouble*) data);
-    return doubleArray;
-}
+//JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_acqIntClk(JNIEnv *env, jobject obj) {
+//    int i;
+//    int length = 1000;
+//    float64 data[length];
+//    acqIntClk(data, -10.0, 10.0, 10000.0, 1000);
+//    jdoubleArray doubleArray = (*env)->NewDoubleArray(env, length);
+//    (*env)->SetDoubleArrayRegion(env, doubleArray, 0, length, (const jdouble*) data);
+//    return doubleArray;
+//}
 
-JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_acqIntClk__DDDJ
+JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_acqIntClk
 (JNIEnv *env, jobject obj, jdouble minVoltage, jdouble maxVoltage, jdouble rate, jlong length) {
+    printf("length %d points\n", length);
     float64 data[length];
     acqIntClk(data, minVoltage, maxVoltage, rate, length);
     jdoubleArray doubleArray = (*env)->NewDoubleArray(env, length);
@@ -62,7 +63,7 @@ int acqIntClk(float64 *data, float64 minVal, float64 maxVal, float64 rate, uInt6
     /*********************************************/
     // DAQmx Read Code
     /*********************************************/
-    DAQmxErrChk(DAQmxReadAnalogF64(taskHandle, 1000, 10.0, DAQmx_Val_GroupByChannel, data, 1000, &read, NULL));
+    DAQmxErrChk(DAQmxReadAnalogF64(taskHandle, sampsPerChanToAcquire, 10.0, DAQmx_Val_GroupByChannel, data, sampsPerChanToAcquire, &read, NULL));
 
     printf("Acquired %d points\n", read);
 

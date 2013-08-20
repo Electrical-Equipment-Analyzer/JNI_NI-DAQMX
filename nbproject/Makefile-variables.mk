@@ -8,9 +8,9 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW_TDM-Windows
-CND_ARTIFACT_DIR_Debug=../DataAcquisitionJNI/libs
+CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW_TDM-Windows
 CND_ARTIFACT_NAME_Debug=libDataAcquisitionNative.dll
-CND_ARTIFACT_PATH_Debug=../DataAcquisitionJNI/libs/libDataAcquisitionNative.dll
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW_TDM-Windows/libDataAcquisitionNative.dll
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW_TDM-Windows/package
 CND_PACKAGE_NAME_Debug=libDataAcquisitionNative.dll.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/MinGW_TDM-Windows/package/libDataAcquisitionNative.dll.tar
