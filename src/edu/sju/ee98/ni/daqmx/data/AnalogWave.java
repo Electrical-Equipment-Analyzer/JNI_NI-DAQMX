@@ -5,13 +5,14 @@
 package edu.sju.ee98.ni.daqmx.data;
 
 import edu.sju.ee98.ni.daqmx.DAQmx;
+import edu.sju.ee98.ni.daqmx.LoadLibraryException;
 import edu.sju.ee98.ni.daqmx.NIAnalogConfig;
 
 /**
  *
  * @author Leo
  */
-public class AnalogWave implements java.io.Serializable {
+public class AnalogWave implements WaveData {
 
     private NIAnalogConfig config;
     private double[] data;
@@ -20,10 +21,18 @@ public class AnalogWave implements java.io.Serializable {
         this.config = config;
     }
 
-    public void read() {
+    public void gen(int length, double a, double b) {
+        data = new double[length];
+        for (int x = 0; x < data.length; x++) {
+            data[x] = Math.sin(x / b) * a;
+        }
+    }
+
+    public void read() throws LoadLibraryException {
         this.data = new DAQmx().acqIntClk(config.getMinVoltage(), config.getMaxVoltage(), config.getRate(), config.getLength());
     }
 
+    @Override
     public double[] getData() {
         return data;
     }
