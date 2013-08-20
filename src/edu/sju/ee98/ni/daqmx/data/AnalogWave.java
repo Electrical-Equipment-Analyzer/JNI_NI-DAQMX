@@ -7,6 +7,7 @@ package edu.sju.ee98.ni.daqmx.data;
 import edu.sju.ee98.ni.daqmx.DAQmx;
 import edu.sju.ee98.ni.daqmx.LoadLibraryException;
 import edu.sju.ee98.ni.daqmx.NIAnalogConfig;
+import java.util.Arrays;
 
 /**
  *
@@ -24,7 +25,7 @@ public class AnalogWave implements WaveData {
     public void gen(int length, double a, double b) {
         data = new double[length];
         for (int x = 0; x < data.length; x++) {
-            data[x] = Math.sin(x / b) * a;
+            data[x] = Math.sin(b * x) * a;
         }
     }
 
@@ -35,5 +36,10 @@ public class AnalogWave implements WaveData {
     @Override
     public double[] getData() {
         return data;
+    }
+
+    @Override
+    public String toString() {
+        return "AnalogWave{" + "config=" + config + ", data=" + Arrays.toString(data) + '}';
     }
 }
