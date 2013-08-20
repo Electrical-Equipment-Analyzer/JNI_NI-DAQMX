@@ -22,10 +22,10 @@ public class AnalogWave implements WaveData {
         this.config = config;
     }
 
-    public void gen(int length, double a, double b) {
-        data = new double[length];
+    public void gen() {
+        data = new double[(int) config.getLength()];
         for (int x = 0; x < data.length; x++) {
-            data[x] = Math.sin(b * x) * a;
+            data[x] = Math.sin(config.getRate() * x) * config.getMaxVoltage();
         }
     }
 

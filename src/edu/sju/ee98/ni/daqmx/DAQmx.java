@@ -12,15 +12,14 @@ public class DAQmx {
 
     public DAQmx() throws LoadLibraryException {
         try {
-            System.loadLibrary("../DataAcquisitionNative/dist/Debug/MinGW_TDM-Windows/libDataAcquisitionNative");
+            System.loadLibrary("lib/libDataAcquisitionNative");
+//            System.loadLibrary("../DataAcquisitionNative/dist/Debug/MinGW_TDM-Windows/libDataAcquisitionNative");
         } catch (java.lang.UnsatisfiedLinkError err) {
             throw new LoadLibraryException(err.getMessage());
         }
     }
 
     public native void print();
-
-    public native double[] acqIntClk();
 
     public native double[] acqIntClk(double minVoltage, double maxVoltage, double rate, long length);
 
