@@ -39,6 +39,11 @@ public class AnalogWave implements WaveData {
     }
 
     @Override
+    public double[] getDoubleArray() {
+        return data;
+    }
+
+    @Override
     public String toString() {
         return "AnalogWave{" + "config=" + config + ", data=" + Arrays.toString(data) + '}';
     }
