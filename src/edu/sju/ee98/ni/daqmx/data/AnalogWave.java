@@ -22,10 +22,14 @@ public class AnalogWave implements WaveData {
         this.config = config;
     }
 
+//    public static void main(String[] args) {
+//        System.out.println(Math.si);
+//    }
+    
     public void gen() {
         data = new double[(int) config.getLength()];
         for (int x = 0; x < data.length; x++) {
-            data[x] = Math.sin(config.getRate() * x) * config.getMaxVoltage();
+            data[x] = Math.sin(x / config.getRate() * 2 * Math.PI) * config.getMaxVoltage();
         }
     }
 
@@ -41,6 +45,11 @@ public class AnalogWave implements WaveData {
     @Override
     public double[] getDoubleArray() {
         return data;
+    }
+
+    @Override
+    public double getRate() {
+        return this.config.getRate();
     }
 
     @Override

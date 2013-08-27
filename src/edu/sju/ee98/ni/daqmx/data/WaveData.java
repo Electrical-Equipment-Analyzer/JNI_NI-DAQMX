@@ -11,6 +11,8 @@ package edu.sju.ee98.ni.daqmx.data;
 public interface WaveData extends java.io.Serializable {
 
     public Object getData();
-    
+
     public double[] getDoubleArray();
+
+    public double getRate();
 }
