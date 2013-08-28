@@ -29,7 +29,9 @@ JNIEXPORT void JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_print(JNIEnv *env, jobje
 //}
 
 JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_acqIntClk
-(JNIEnv *env, jobject obj, jdouble minVoltage, jdouble maxVoltage, jdouble rate, jlong length) {
+(JNIEnv *env, jobject obj, jstring jPhysicalChannel, jdouble minVoltage, jdouble maxVoltage, jdouble rate, jlong length) {
+    const char *physicalChannel = (*env)->GetStringUTFChars(env, jPhysicalChannel, 0);
+    printf("Physical Channel : %s\n", physicalChannel);
     printf("length %d points\n", length);
     float64 data[length];
     acqIntClk(data, minVoltage, maxVoltage, rate, length);
