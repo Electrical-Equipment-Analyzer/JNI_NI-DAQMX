@@ -29,7 +29,7 @@ public class AnalogWave implements WaveData {
     public void gen() {
         data = new double[(int) config.getLength()];
         for (int x = 0; x < data.length; x++) {
-            data[x] = Math.sin(x / config.getRate() * 2 * Math.PI) * config.getMaxVoltage();
+            data[x] = Math.sin(x / config.getRate() * 2 * Math.PI * config.getMinVoltage()) * config.getMaxVoltage();
         }
     }
 
