@@ -34,7 +34,7 @@ JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_acqIntClk
     printf("Physical Channel : %s\n", physicalChannel);
     printf("length %d points\n", length);
     float64 data[length];
-    acqIntClk(data, minVoltage, maxVoltage, rate, length);
+    acqIntClk(data, physicalChannel, minVoltage, maxVoltage, rate, length);
     jdoubleArray doubleArray = (*env)->NewDoubleArray(env, length);
     (*env)->SetDoubleArrayRegion(env, doubleArray, 0, length, (const jdouble*) data);
     return doubleArray;
@@ -43,7 +43,7 @@ JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_DAQmx_acqIntClk
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-int acqIntClk(float64 *data, float64 minVal, float64 maxVal, float64 rate, uInt64 sampsPerChanToAcquire) {
+int acqIntClk(float64 *data, const char physicalChannel[], float64 minVal, float64 maxVal, float64 rate, uInt64 sampsPerChanToAcquire) {
     int32 error = 0;
     TaskHandle taskHandle = 0;
     int32 read;
@@ -54,7 +54,7 @@ int acqIntClk(float64 *data, float64 minVal, float64 maxVal, float64 rate, uInt6
     // DAQmx Configure Code
     /*********************************************/
     DAQmxErrChk(DAQmxCreateTask("", &taskHandle));
-    DAQmxErrChk(DAQmxCreateAIVoltageChan(taskHandle, "Dev1/ai0", "", DAQmx_Val_Cfg_Default, minVal, maxVal, DAQmx_Val_Volts, NULL));
+    DAQmxErrChk(DAQmxCreateAIVoltageChan(taskHandle, physicalChannel, "", DAQmx_Val_Cfg_Default, minVal, maxVal, DAQmx_Val_Volts, NULL));
     DAQmxErrChk(DAQmxCfgSampClkTiming(taskHandle, "", rate, DAQmx_Val_Rising, DAQmx_Val_FiniteSamps, sampsPerChanToAcquire));
 
     /*********************************************/
