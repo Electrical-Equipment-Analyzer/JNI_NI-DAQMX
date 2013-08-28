@@ -7,6 +7,7 @@ package edu.sju.ee98.ni.daqmx.data;
 import edu.sju.ee98.ni.daqmx.DAQmx;
 import edu.sju.ee98.ni.daqmx.LoadLibraryException;
 import edu.sju.ee98.ni.daqmx.NIAnalogConfig;
+import java.awt.Graphics;
 import java.util.Arrays;
 
 /**
@@ -42,9 +43,14 @@ public class AnalogWave implements WaveData {
         return data;
     }
 
+//    @Override
+//    public double[] getDoubleArray() {
+//        return data;
+//    }
+
     @Override
-    public double[] getDoubleArray() {
-        return data;
+    public void paintWave(Graphics g, Grid grid) {
+        grid.paintWave(g, this.getRate(), this.data);
     }
 
     @Override
