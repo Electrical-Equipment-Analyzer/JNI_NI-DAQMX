@@ -10,16 +10,22 @@ package edu.sju.ee98.ni.daqmx;
  */
 public class NIAnalogConfig implements java.io.Serializable {
 
+    private String physicalChannel;
     private double minVoltage;
     private double maxVoltage;
     private double rate;
     private long length;
 
-    public NIAnalogConfig(double minVoltage, double maxVoltage, double rate, long length) {
+    public NIAnalogConfig(String physicalChannel, double minVoltage, double maxVoltage, double rate, long length) {
+        this.physicalChannel = physicalChannel;
         this.minVoltage = minVoltage;
         this.maxVoltage = maxVoltage;
         this.rate = rate;
         this.length = length;
+    }
+
+    public String getPhysicalChannel() {
+        return physicalChannel;
     }
 
     public double getMinVoltage() {
@@ -40,6 +46,6 @@ public class NIAnalogConfig implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "NIAnalogConfig{" + "minVoltage=" + minVoltage + ", maxVoltage=" + maxVoltage + ", rate=" + rate + ", length=" + length + '}';
+        return "NIAnalogConfig{" + "physicalChannel=" + physicalChannel + ", minVoltage=" + minVoltage + ", maxVoltage=" + maxVoltage + ", rate=" + rate + ", length=" + length + '}';
     }
 }

@@ -26,7 +26,6 @@ public class AnalogWave implements WaveData {
 //    public static void main(String[] args) {
 //        System.out.println(Math.si);
 //    }
-    
     public void gen() {
         data = new double[(int) config.getLength()];
         for (int x = 0; x < data.length; x++) {
@@ -35,7 +34,7 @@ public class AnalogWave implements WaveData {
     }
 
     public void read() throws LoadLibraryException {
-        this.data = new DAQmx().acqIntClk(config.getMinVoltage(), config.getMaxVoltage(), config.getRate(), config.getLength());
+        this.data = new DAQmx().acqIntClk(config.getPhysicalChannel(), config.getMinVoltage(), config.getMaxVoltage(), config.getRate(), config.getLength());
     }
 
     @Override
@@ -47,7 +46,6 @@ public class AnalogWave implements WaveData {
 //    public double[] getDoubleArray() {
 //        return data;
 //    }
-
     @Override
     public void paintWave(Graphics g, Grid grid) {
         grid.paintWave(g, this.getRate(), this.data);
