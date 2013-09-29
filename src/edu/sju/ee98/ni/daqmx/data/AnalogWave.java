@@ -6,7 +6,7 @@ package edu.sju.ee98.ni.daqmx.data;
 
 import edu.sju.ee98.ni.daqmx.DAQmx;
 import edu.sju.ee98.ni.daqmx.LoadLibraryException;
-import edu.sju.ee98.ni.daqmx.NIAnalogConfig;
+import edu.sju.ee98.ni.daqmx.config.NIAnalogConfig;
 import java.awt.Graphics;
 import java.util.Arrays;
 
