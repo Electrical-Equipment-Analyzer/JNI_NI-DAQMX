@@ -8,13 +8,7 @@ package edu.sju.ee98.ni.daqmx.config;
  *
  * @author 102m05008
  */
-public interface NIAnalogConfig extends NIConfig {
+public interface NIConfig {
 
-    public double getMinVoltage();
-
-    public double getMaxVoltage();
-
-    public double getRate();
-
-    public long getLength();
+    public String getPhysicalChannel();
 }

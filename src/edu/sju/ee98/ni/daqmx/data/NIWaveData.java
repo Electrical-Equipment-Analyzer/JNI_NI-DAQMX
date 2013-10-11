@@ -10,7 +10,10 @@ import java.awt.Graphics;
  *
  * @author Leo
  */
-public interface Grid {
+public interface NIWaveData extends java.io.Serializable {
 
-    public void paintWave(Graphics g, double rate, double[] data);
+
+    public Object getData();
+
+    public double getRate();
 }
