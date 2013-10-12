@@ -35,7 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/DAQmx.o
+	${OBJECTDIR}/src/DAQmx.o \
+	${OBJECTDIR}/src/analog/Acq-IntClk.o
 
 
 # C Compiler Flags
@@ -66,6 +67,11 @@ ${OBJECTDIR}/src/DAQmx.o: src/DAQmx.c
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.c) -g -I../../../Program\ Files/Java/jdk1.7.0_21/include -I../../../Program\ Files/Java/jdk1.7.0_21/include/win32 -Iinclude  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.c
+
+${OBJECTDIR}/src/analog/Acq-IntClk.o: src/analog/Acq-IntClk.c 
+	${MKDIR} -p ${OBJECTDIR}/src/analog
+	${RM} $@.d
+	$(COMPILE.c) -g -I../../../Program\ Files/Java/jdk1.7.0_21/include -I../../../Program\ Files/Java/jdk1.7.0_21/include/win32 -Iinclude  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/Acq-IntClk.o src/analog/Acq-IntClk.c
 
 # Subprojects
 .build-subprojects:

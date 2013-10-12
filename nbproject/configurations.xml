@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>header/edu_sju_ee98_ni_daqmx_DAQmx.h</itemPath>
+      <itemPath>header/edu_sju_ee98_ni_daqmx_analog_AcqIntClk.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,6 +14,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>src/analog/Acq-IntClk.c</itemPath>
       <itemPath>src/DAQmx.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -60,7 +62,14 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="header/edu_sju_ee98_ni_daqmx_analog_AcqIntClk.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/DAQmx.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/analog/Acq-IntClk.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -87,7 +96,14 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="header/edu_sju_ee98_ni_daqmx_analog_AcqIntClk.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/DAQmx.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/analog/Acq-IntClk.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>
