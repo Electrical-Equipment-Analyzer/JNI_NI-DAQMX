@@ -78,6 +78,7 @@
         <mkdir dir="./build/header" />
         <javah destdir="./build/header" classpath="./build/classes/">
             <class name="edu.sju.ee98.ni.daqmx.DAQmx"/>
+            <class name="edu.sju.ee98.ni.daqmx.analog.AcqIntClk"/>
         </javah>
     </target>
 </project>

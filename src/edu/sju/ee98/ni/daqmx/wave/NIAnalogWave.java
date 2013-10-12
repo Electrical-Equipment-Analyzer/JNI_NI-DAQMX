@@ -2,11 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.sju.ee98.ni.daqmx.data;
+package edu.sju.ee98.ni.daqmx.wave;
 
 import edu.sju.ee98.ni.daqmx.DAQmx;
 import edu.sju.ee98.ni.daqmx.LoadLibraryException;
 import edu.sju.ee98.ni.daqmx.config.NIAnalogConfig;
+import edu.sju.ee98.ni.daqmx.data.NIWaveData;
 import java.util.Arrays;
 
 /**
@@ -20,13 +21,6 @@ public class NIAnalogWave implements NIWaveData {
 
     public NIAnalogWave(NIAnalogConfig config) {
         this.config = config;
-    }
-
-    public void gen() {
-        data = new double[(int) config.getLength()];
-        for (int x = 0; x < data.length; x++) {
-            data[x] = Math.sin(x / config.getRate() * 2 * Math.PI * config.getMinVoltage()) * config.getMaxVoltage();
-        }
     }
 
     public void read() throws LoadLibraryException {
