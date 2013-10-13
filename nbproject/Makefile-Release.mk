@@ -36,7 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/DAQmx.o \
-	${OBJECTDIR}/src/analog/Acq-IntClk.o
+	${OBJECTDIR}/src/analog/Acq-IntClk.o \
+	${OBJECTDIR}/src/analog/ContGen-IntClk.o
 
 
 # C Compiler Flags
@@ -61,7 +62,7 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -mno-cygwin -shared
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -mno-cygwin -shared
 
 ${OBJECTDIR}/src/DAQmx.o: src/DAQmx.c 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -72,6 +73,11 @@ ${OBJECTDIR}/src/analog/Acq-IntClk.o: src/analog/Acq-IntClk.c
 	${MKDIR} -p ${OBJECTDIR}/src/analog
 	${RM} $@.d
 	$(COMPILE.c) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/Acq-IntClk.o src/analog/Acq-IntClk.c
+
+${OBJECTDIR}/src/analog/ContGen-IntClk.o: src/analog/ContGen-IntClk.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/analog
+	${RM} $@.d
+	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/ContGen-IntClk.o src/analog/ContGen-IntClk.cpp
 
 # Subprojects
 .build-subprojects:

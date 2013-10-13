@@ -36,7 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/DAQmx.o \
-	${OBJECTDIR}/src/analog/Acq-IntClk.o
+	${OBJECTDIR}/src/analog/Acq-IntClk.o \
+	${OBJECTDIR}/src/analog/ContGen-IntClk.o
 
 
 # C Compiler Flags
@@ -53,11 +54,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Llib -lnicaiu
+LDLIBSOPTIONS=-Llib -lnicaiu ../../../MinGW64/bin/libstdc++_64-6.dll
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}: ../../../MinGW64/bin/libstdc++_64-6.dll
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -72,6 +75,11 @@ ${OBJECTDIR}/src/analog/Acq-IntClk.o: src/analog/Acq-IntClk.c
 	${MKDIR} -p ${OBJECTDIR}/src/analog
 	${RM} $@.d
 	$(COMPILE.c) -g -I../../../Program\ Files/Java/jdk1.7.0_21/include -I../../../Program\ Files/Java/jdk1.7.0_21/include/win32 -Iinclude  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/Acq-IntClk.o src/analog/Acq-IntClk.c
+
+${OBJECTDIR}/src/analog/ContGen-IntClk.o: src/analog/ContGen-IntClk.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/analog
+	${RM} $@.d
+	$(COMPILE.cc) -g -I../../../Program\ Files/Java/jdk1.7.0_21/include -I../../../Program\ Files/Java/jdk1.7.0_21/include/win32 -Iinclude  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/ContGen-IntClk.o src/analog/ContGen-IntClk.cpp
 
 # Subprojects
 .build-subprojects:

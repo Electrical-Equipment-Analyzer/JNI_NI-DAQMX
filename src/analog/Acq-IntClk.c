@@ -46,11 +46,11 @@
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
 JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_analog_AcqIntClk_acqIntClk
-(JNIEnv *env, jobject obj, jstring jPhysicalChannel, jdouble minVoltage, jdouble maxVoltage, jdouble rate, jlong sampsPerChanToAcquire) {
+(JNIEnv *env, jobject obj, jstring jPhysicalChannel, jdouble minVoltage, jdouble maxVoltage, jdouble rate, jlong length) {
     const char *physicalChannel = (*env)->GetStringUTFChars(env, jPhysicalChannel, 0);
     printf("Physical Channel : %s\n", physicalChannel);
-    printf("length %d points\n", sampsPerChanToAcquire);
-    float64 data[sampsPerChanToAcquire];
+    printf("length %d points\n", length);
+    float64 data[length];
     //    acqIntClk(data, physicalChannel, minVoltage, maxVoltage, rate, length);
 
     int32 error = 0;
@@ -62,13 +62,13 @@ JNIEXPORT jdoubleArray JNICALL Java_edu_sju_ee98_ni_daqmx_analog_AcqIntClk_acqIn
     // DAQmx Configure Code
     DAQmxErrChk(DAQmxCreateTask("", &taskHandle));
     DAQmxErrChk(DAQmxCreateAIVoltageChan(taskHandle, physicalChannel, "", DAQmx_Val_Cfg_Default, minVoltage, maxVoltage, DAQmx_Val_Volts, NULL));
-    DAQmxErrChk(DAQmxCfgSampClkTiming(taskHandle, "", rate, DAQmx_Val_Rising, DAQmx_Val_FiniteSamps, sampsPerChanToAcquire));
+    DAQmxErrChk(DAQmxCfgSampClkTiming(taskHandle, "", rate, DAQmx_Val_Rising, DAQmx_Val_FiniteSamps, length));
     /*********************************************/
     // DAQmx Start Code
     DAQmxErrChk(DAQmxStartTask(taskHandle));
     /*********************************************/
     // DAQmx Read Code
-    DAQmxErrChk(DAQmxReadAnalogF64(taskHandle, 1000, 10.0, DAQmx_Val_GroupByChannel, data, 1000, &read, NULL));
+    DAQmxErrChk(DAQmxReadAnalogF64(taskHandle, length, 10.0, DAQmx_Val_GroupByChannel, data, length, &read, NULL));
     printf("Acquired %d points\n", read);
 Error:
     if (DAQmxFailed(error))
@@ -83,7 +83,7 @@ Error:
     if (DAQmxFailed(error))
         printf("DAQmx Error: %s\n", errBuff);
 
-    jdoubleArray doubleArray = (*env)->NewDoubleArray(env, sampsPerChanToAcquire);
-    (*env)->SetDoubleArrayRegion(env, doubleArray, 0, sampsPerChanToAcquire, (const jdouble*) data);
+    jdoubleArray doubleArray = (*env)->NewDoubleArray(env, length);
+    (*env)->SetDoubleArrayRegion(env, doubleArray, 0, length, (const jdouble*) data);
     return doubleArray;
 }
