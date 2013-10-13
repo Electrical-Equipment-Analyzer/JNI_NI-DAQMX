@@ -32,10 +32,10 @@ public class AcqIntClk implements NIWaveData {
         }
         this.data = acqIntClk(
                 voltageChan.getPhysicalChannel(), voltageChan.getMinVoltage(), voltageChan.getMaxVoltage(),
-                clkTiming.getRate(), clkTiming.getSampsPerChanToAcquire());
+                clkTiming.getRate(), clkTiming.getLength());
     }
 
-    private native double[] acqIntClk(String physicalChannel, double minVoltage, double maxVoltage, double rate, long sampsPerChanToAcquire);
+    private native double[] acqIntClk(String physicalChannel, double minVoltage, double maxVoltage, double rate, long length);
 
     @Override
     public double[] getData() {

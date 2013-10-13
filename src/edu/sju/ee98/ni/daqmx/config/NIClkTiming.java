@@ -12,5 +12,5 @@ public interface NIClkTiming {
 
     public double getRate();
 
-    public long getSampsPerChanToAcquire();
+    public long getLength();
 }

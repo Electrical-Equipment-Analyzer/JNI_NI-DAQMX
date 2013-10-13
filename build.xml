@@ -79,6 +79,7 @@
         <javah destdir="./build/header" classpath="./build/classes/">
             <class name="edu.sju.ee98.ni.daqmx.DAQmx"/>
             <class name="edu.sju.ee98.ni.daqmx.analog.AcqIntClk"/>
+            <class name="edu.sju.ee98.ni.daqmx.analog.ContGenIntClk"/>
         </javah>
     </target>
 </project>
