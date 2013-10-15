@@ -46,4 +46,9 @@ public class AcqIntClk implements NIWaveData {
     public double getRate() {
         return this.clkTiming.getRate();
     }
+
+    @Override
+    public String toString() {
+        return "AcqIntClk{" + "voltageChan=" + voltageChan + ", clkTiming=" + clkTiming + ", data=" + data + '}';
+    }
 }
