@@ -17,24 +17,30 @@ public class AnalogGenerator implements NIWaveData {
     private int length;
     private double voltage;
     private double frequency;
+    private double position;
 
     public AnalogGenerator(double rate, int length, double voltage, double frequency) {
+        this(rate, length, voltage, frequency, 0);
+    }
+
+    public AnalogGenerator(double rate, int length, double voltage, double frequency, double position) {
         this.rate = rate;
         this.length = length;
         this.voltage = voltage;
         this.frequency = frequency;
+        this.position = position;
         generate();
     }
 
     private void generate() {
         data = new double[length];
         for (int x = 0; x < data.length; x++) {
-            data[x] = this.voltage * Math.sin(x / this.rate * 2 * Math.PI * this.frequency);
+            data[x] = this.voltage * Math.sin((x + this.position) / this.rate * 2 * Math.PI * this.frequency);
         }
     }
 
     @Override
-    public Object getData() {
+    public double[] getData() {
         return this.data;
     }
 
