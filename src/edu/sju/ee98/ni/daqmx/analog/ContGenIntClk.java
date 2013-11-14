@@ -12,11 +12,8 @@ import edu.sju.ee98.ni.daqmx.data.NIWaveData;
  *
  * @author Leo
  */
-public class ContGenIntClk implements NIWaveData {
+public class ContGenIntClk extends AnalogWave {
 
-    private NIVoltageChan voltageChan;
-    private NIClkTiming clkTiming;
-    private double[] data;
     private long nativeStruct;
 
     private native void construct();
@@ -28,9 +25,8 @@ public class ContGenIntClk implements NIWaveData {
     }
 
     public ContGenIntClk(NIVoltageChan voltageChan, NIClkTiming clkTiming, double[] data) {
+        super(voltageChan, clkTiming);
         this.construct();
-        this.voltageChan = voltageChan;
-        this.clkTiming = clkTiming;
         this.data = data;
     }
 

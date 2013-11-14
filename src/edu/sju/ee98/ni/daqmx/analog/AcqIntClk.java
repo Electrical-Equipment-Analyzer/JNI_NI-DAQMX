@@ -7,21 +7,15 @@ package edu.sju.ee98.ni.daqmx.analog;
 import edu.sju.ee98.ni.daqmx.LoadLibraryException;
 import edu.sju.ee98.ni.daqmx.config.NIClkTiming;
 import edu.sju.ee98.ni.daqmx.config.NIVoltageChan;
-import edu.sju.ee98.ni.daqmx.data.NIWaveData;
 
 /**
  *
  * @author Leo
  */
-public class AcqIntClk implements NIWaveData {
-
-    private NIVoltageChan voltageChan;
-    private NIClkTiming clkTiming;
-    private double[] data;
+public class AcqIntClk extends AnalogWave {
 
     public AcqIntClk(NIVoltageChan voltageChan, NIClkTiming clkTiming) {
-        this.voltageChan = voltageChan;
-        this.clkTiming = clkTiming;
+        super(voltageChan, clkTiming);
     }
 
     public void read() throws LoadLibraryException {
