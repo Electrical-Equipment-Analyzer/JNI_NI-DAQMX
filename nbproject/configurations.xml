@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="88">
+<configurationDescriptor version="90">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -38,22 +38,23 @@
   <confs>
     <conf name="Debug" type="2">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>MinGW_TDM|MinGW_TDM</compilerSet>
+        <compilerSet>TDM_GCC|MinGW_TDM</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
           <incDir>
-            <pElem>../../../Program Files/Java/jdk1.7.0_21/include</pElem>
-            <pElem>../../../Program Files/Java/jdk1.7.0_21/include/win32</pElem>
-            <pElem>include</pElem>
+            <pElem>include/NI</pElem>
+            <pElem>include/java</pElem>
+            <pElem>include/java/win32</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
-            <pElem>../../../Program Files/Java/jdk1.7.0_21/include</pElem>
-            <pElem>../../../Program Files/Java/jdk1.7.0_21/include/win32</pElem>
-            <pElem>include</pElem>
+            <pElem>include/NI</pElem>
+            <pElem>include/java</pElem>
+            <pElem>include/java/win32</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -63,7 +64,7 @@
           <commandlineTool>gcc</commandlineTool>
           <linkerLibItems>
             <linkerLibLibItem>nicaiu</linkerLibLibItem>
-            <linkerLibFileItem>../../../MinGW64/bin/libstdc++_64-6.dll</linkerLibFileItem>
+            <linkerLibLibItem>stdc++_64-6</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -91,8 +92,9 @@
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>

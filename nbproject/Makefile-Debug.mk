@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW_TDM-Windows
+CND_PLATFORM=TDM_GCC-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -54,13 +54,11 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Llib -lnicaiu ../../../MinGW64/bin/libstdc++_64-6.dll
+LDLIBSOPTIONS=-Llib -lnicaiu -lstdc++_64-6
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}: ../../../MinGW64/bin/libstdc++_64-6.dll
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -69,17 +67,17 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_E
 ${OBJECTDIR}/src/DAQmx.o: src/DAQmx.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.c) -g -I../../../Program\ Files/Java/jdk1.7.0_21/include -I../../../Program\ Files/Java/jdk1.7.0_21/include/win32 -Iinclude  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.c
+	$(COMPILE.c) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.c
 
 ${OBJECTDIR}/src/analog/Acq-IntClk.o: src/analog/Acq-IntClk.c 
 	${MKDIR} -p ${OBJECTDIR}/src/analog
 	${RM} $@.d
-	$(COMPILE.c) -g -I../../../Program\ Files/Java/jdk1.7.0_21/include -I../../../Program\ Files/Java/jdk1.7.0_21/include/win32 -Iinclude  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/Acq-IntClk.o src/analog/Acq-IntClk.c
+	$(COMPILE.c) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/Acq-IntClk.o src/analog/Acq-IntClk.c
 
 ${OBJECTDIR}/src/analog/ContGen-IntClk.o: src/analog/ContGen-IntClk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/analog
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../Program\ Files/Java/jdk1.7.0_21/include -I../../../Program\ Files/Java/jdk1.7.0_21/include/win32 -Iinclude  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/ContGen-IntClk.o src/analog/ContGen-IntClk.cpp
+	$(COMPILE.cc) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/ContGen-IntClk.o src/analog/ContGen-IntClk.cpp
 
 # Subprojects
 .build-subprojects:
