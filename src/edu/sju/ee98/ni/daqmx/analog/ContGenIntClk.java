@@ -4,9 +4,13 @@
  */
 package edu.sju.ee98.ni.daqmx.analog;
 
+import edu.sju.ee98.ni.daqmx.NativeUtils;
 import edu.sju.ee98.ni.daqmx.config.NIClkTiming;
 import edu.sju.ee98.ni.daqmx.config.NIVoltageChan;
 import edu.sju.ee98.ni.daqmx.data.NIWaveData;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,7 +25,11 @@ public class ContGenIntClk extends AnalogWave {
     private native void destruct();
 
     static {
-        System.loadLibrary("lib/libDataAcquisitionNative");
+        try {
+            NativeUtils.loadLibraryFromJar("libDAQ");
+        } catch (IOException ex) {
+            Logger.getLogger(ContGenIntClk.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public ContGenIntClk(NIVoltageChan voltageChan, NIClkTiming clkTiming, double[] data) {

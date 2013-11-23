@@ -5,8 +5,12 @@
 package edu.sju.ee98.ni.daqmx.analog;
 
 import edu.sju.ee98.ni.daqmx.LoadLibraryException;
+import edu.sju.ee98.ni.daqmx.NativeUtils;
 import edu.sju.ee98.ni.daqmx.config.NIClkTiming;
 import edu.sju.ee98.ni.daqmx.config.NIVoltageChan;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,16 +18,19 @@ import edu.sju.ee98.ni.daqmx.config.NIVoltageChan;
  */
 public class AcqIntClk extends AnalogWave {
 
+    static {
+        try {
+            NativeUtils.loadLibraryFromJar("libDAQ");
+        } catch (IOException ex) {
+            Logger.getLogger(ContGenIntClk.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public AcqIntClk(NIVoltageChan voltageChan, NIClkTiming clkTiming) {
         super(voltageChan, clkTiming);
     }
 
     public void read() throws LoadLibraryException {
-        try {
-            System.loadLibrary("lib/libDataAcquisitionNative");
-        } catch (java.lang.UnsatisfiedLinkError err) {
-            throw new LoadLibraryException(err.getMessage());
-        }
         this.data = acqIntClk(
                 voltageChan.getPhysicalChannel(), voltageChan.getMinVoltage(), voltageChan.getMaxVoltage(),
                 clkTiming.getRate(), clkTiming.getLength());

@@ -1,5 +1,9 @@
 package edu.sju.ee98.ni.daqmx;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -12,10 +16,12 @@ public class DAQmx {
 
     public DAQmx() throws LoadLibraryException {
         try {
-            System.loadLibrary("lib/libDataAcquisitionNative");
+            NativeUtils.loadLibraryFromJar("libDAQ");
 //            System.loadLibrary("../DataAcquisitionNative/dist/Debug/MinGW_TDM-Windows/libDataAcquisitionNative");
         } catch (java.lang.UnsatisfiedLinkError err) {
             throw new LoadLibraryException(err.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(DAQmx.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
