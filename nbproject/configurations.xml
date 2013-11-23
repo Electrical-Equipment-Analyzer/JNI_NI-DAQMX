@@ -4,9 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>header/edu_sju_ee98_ni_daqmx_DAQmx.h</itemPath>
-      <itemPath>header/edu_sju_ee98_ni_daqmx_analog_AcqIntClk.h</itemPath>
-      <itemPath>header/edu_sju_ee98_ni_daqmx_analog_ContGenIntClk.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -58,6 +55,7 @@
           </incDir>
         </ccTool>
         <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDAQ.${CND_DLIB_EXT}</output>
           <linkerAddLib>
             <pElem>lib</pElem>
           </linkerAddLib>
@@ -68,21 +66,18 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="header/edu_sju_ee98_ni_daqmx_DAQmx.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="header/edu_sju_ee98_ni_daqmx_analog_AcqIntClk.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="header/edu_sju_ee98_ni_daqmx_analog_ContGenIntClk.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
+      <folder path="HeaderFiles">
+        <cTool>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
       <item path="src/DAQmx.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/analog/Acq-IntClk.c" ex="false" tool="0" flavor2="0">
@@ -110,21 +105,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="header/edu_sju_ee98_ni_daqmx_DAQmx.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="header/edu_sju_ee98_ni_daqmx_analog_AcqIntClk.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="header/edu_sju_ee98_ni_daqmx_analog_ContGenIntClk.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="src/DAQmx.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/analog/Acq-IntClk.c" ex="false" tool="0" flavor2="0">
