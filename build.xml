@@ -72,6 +72,13 @@
 
     -->
     
+    <target name="-post-clean">
+        <delete>
+            <fileset dir="../DataAcquisitionNative/header/" includes="*"/>
+            <fileset dir="binary/native/64/windows/" includes="*"/>
+        </delete>
+    </target>
+    
     <target name="-post-compile">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
@@ -81,21 +88,18 @@
             <class name="edu.sju.ee98.ni.daqmx.DAQmx"/>
             <class name="edu.sju.ee98.ni.daqmx.analog.AcqIntClk"/>
             <class name="edu.sju.ee98.ni.daqmx.analog.ContGenIntClk"/>
+            <class name="edu.sju.ee.ni.daqmx.TaskHandle"/>
         </javah>
-        <delete>
-            <fileset dir="../DataAcquisitionNative/header/" includes="*"/>
-        </delete>
         <copy todir="../DataAcquisitionNative/header">
             <fileset dir="./build/header" />
         </copy>
-    </target>
-    
-    <target name="-pre-jar">
-        <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
         <echo message="build native" />
         <exec executable="bash">
             <arg value="buildnative.sh"/>
         </exec>
+        <copy todir="build/classes">
+            <fileset dir="binary" />
+        </copy>
     </target>
+    
 </project>

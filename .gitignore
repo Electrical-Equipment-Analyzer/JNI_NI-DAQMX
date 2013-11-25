@@ -2,3 +2,4 @@ binary/
 build/
 dist/
 nbproject/private/
+*.log
