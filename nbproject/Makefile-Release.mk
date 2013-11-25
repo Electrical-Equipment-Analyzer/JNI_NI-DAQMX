@@ -36,8 +36,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/DAQmx.o \
+	${OBJECTDIR}/src/NativeUtils.o \
 	${OBJECTDIR}/src/analog/Acq-IntClk.o \
-	${OBJECTDIR}/src/analog/ContGen-IntClk.o
+	${OBJECTDIR}/src/analog/ContGen-IntClk.o \
+	${OBJECTDIR}/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.o \
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
@@ -64,10 +67,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_E
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDataAcquisitionNative.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
 
-${OBJECTDIR}/src/DAQmx.o: src/DAQmx.c 
+${OBJECTDIR}/src/DAQmx.o: src/DAQmx.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.c) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.c
+	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.cpp
+
+${OBJECTDIR}/src/NativeUtils.o: src/NativeUtils.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/NativeUtils.o src/NativeUtils.cpp
 
 ${OBJECTDIR}/src/analog/Acq-IntClk.o: src/analog/Acq-IntClk.c 
 	${MKDIR} -p ${OBJECTDIR}/src/analog
@@ -78,6 +86,16 @@ ${OBJECTDIR}/src/analog/ContGen-IntClk.o: src/analog/ContGen-IntClk.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/analog
 	${RM} $@.d
 	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/ContGen-IntClk.o src/analog/ContGen-IntClk.cpp
+
+${OBJECTDIR}/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.o: src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/edu/sju/ee/ni/daqmx
+	${RM} $@.d
+	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.o src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.cpp
+
+${OBJECTDIR}/src/main.o: src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:

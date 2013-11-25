@@ -7,12 +7,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="DAQ">
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/nbproject/Makefile-Debug.mk</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/analog/Acq-IntClk.c</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/DAQmx.c</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.h</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.cpp</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/include/NI/NIDAQmx.h</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/include/java/jni.h</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/header/edu_sju_ee98_ni_daqmx_DAQmx.h</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/main.cpp</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/analog/ContGen-IntClk.cpp</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/Makefile</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/nbproject/Makefile-Release.mk</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/DAQmx.cpp</file>
         </group>
     </open-files>
 </project-private>
