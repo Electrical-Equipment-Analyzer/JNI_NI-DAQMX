@@ -38,9 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/DAQmx.o \
 	${OBJECTDIR}/src/NativeUtils.o \
 	${OBJECTDIR}/src/analog/Acq-IntClk.o \
-	${OBJECTDIR}/src/analog/ContGen-IntClk.o \
-	${OBJECTDIR}/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.o \
-	${OBJECTDIR}/src/main.o
+	${OBJECTDIR}/src/analog/ContGen-IntClk.o
 
 
 # C Compiler Flags
@@ -86,16 +84,6 @@ ${OBJECTDIR}/src/analog/ContGen-IntClk.o: src/analog/ContGen-IntClk.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/analog
 	${RM} $@.d
 	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/ContGen-IntClk.o src/analog/ContGen-IntClk.cpp
-
-${OBJECTDIR}/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.o: src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/edu/sju/ee/ni/daqmx
-	${RM} $@.d
-	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.o src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.cpp
-
-${OBJECTDIR}/src/main.o: src/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:

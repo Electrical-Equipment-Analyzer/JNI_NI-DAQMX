@@ -9,12 +9,15 @@
         <group name="DAQ">
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.h</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/edu/sju/ee/ni/daqmx/DAQmxTaskHandle.cpp</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/analog/Acq-IntClk.c</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/include/NI/NIDAQmx.h</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/include/java/jni.h</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/header/edu_sju_ee98_ni_daqmx_DAQmx.h</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/main.cpp</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/analog/ContGen-IntClk.cpp</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/DAQmx.cpp</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/NativeUtils.cpp</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/DAQ/DataAcquisitionNative/src/NativeUtils.h</file>
         </group>
     </open-files>
 </project-private>

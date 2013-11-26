@@ -12,9 +12,13 @@
 extern "C" {
 #endif
 
+struct daq {
+    TaskHandle taskHandle;
+};
 
     const char * toChars(JNIEnv *, jstring);
-
+    struct daq * getStruct(JNIEnv *, jobject);
+    void errorCheck(JNIEnv *, jobject, int32);
 
 #ifdef	__cplusplus
 }
