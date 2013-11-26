@@ -45,6 +45,9 @@ public class DAQmx {
     public native boolean isAlive();
 
     //**************************************************************************
+    //1062***Non-Attribute Function Parameter Values***
+    public static final int Val_Acquired_Into_Buffer = 1;
+    public static final int Val_Transferred_From_Buffer = 2;
     //1092*** Values for the Data Layout parameter of DAQmxWriteAnalogF64, DAQmxWriteBinaryI16, DAQmxWriteDigitalU8, DAQmxWriteDigitalU32, DAQmxWriteDigitalLines ***
     public static final boolean Val_GroupByChannel = false;
     public static final boolean Val_GroupByScanNumber = true;
@@ -59,13 +62,10 @@ public class DAQmx {
     public static final int Val_Rising = 10280;
     public static final int Val_Falling = 10171;
 
-    //**************************************************************************
-    //Channel Configuration/Creation
-    public native void createAIVoltageChan(String physicalChannel, String nameToAssignToChannel, int terminalConfig, double minVal, double maxVal, int units, String customScaleName) throws Exception;
-
-    //**************************************************************************
-    //Timing
-    public native void cfgSampClkTiming(String source, double rate, int activeEdge, int sampleMode, long sampsPerChan) throws Exception;
+    //1770*** Values for DAQmx_Dev_ProductCategory ***
+    //1771*** Value set ProductCategory ***
+    public static final int Val_CSeriesModule = 14659;
+    public static final int Val_SCXIModule = 14660;
 
     //**************************************************************************
     //2211 Task Configuration/Control
@@ -77,9 +77,38 @@ public class DAQmx {
 
     public native void clearTask() throws Exception;
 
+    public native String getNthTaskDevice(int index);
+
+    public native void registerEveryNSamplesEvent(int everyNsamplesEventType, int nSamples, int options);
+
+    public native void registerDoneEvent(int options);
+
+    //**************************************************************************
+    //2245Channel Configuration/Creation
+    public native void createAIVoltageChan(String physicalChannel, String nameToAssignToChannel, int terminalConfig, double minVal, double maxVal, int units, String customScaleName) throws Exception;
+
+    public native void createAOVoltageChan(String physicalChannel, String nameToAssignToChannel, double minVal, double maxVal, int units, String customScaleName);
+
+    //**************************************************************************
+    //2375 Triggering
+    public native void cfgDigEdgeStartTrig(String triggerSource, int triggerEdge);
+
     //**************************************************************************
     //2402 Read Data
     public native int readAnalogF64(int numSampsPerChan, double timeout, boolean fillMode, double readArray[], int arraySizeInSamps, Boolean reserved) throws Exception;
+
+    //2453Write Data
+    public native void writeAnalogF64(int numSampsPerChan, boolean autoStart, double timeout, boolean dataLayout, double writeArray[]);
+
+    //5072********** Device **********
+    public native int getDevProductCategory(String device);
+
+    //5517********** Task **********
+    public native int getTaskNumDevices();
+
+    //**************************************************************************
+    //5531Timing
+    public native void cfgSampClkTiming(String source, double rate, int activeEdge, int sampleMode, long sampsPerChan) throws Exception;
 
     //**************************************************************************
     //Test----------------------------------------------------------------------
