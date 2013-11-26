@@ -7,6 +7,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#undef edu_sju_ee_ni_daqmx_DAQmx_Val_Acquired_Into_Buffer
+#define edu_sju_ee_ni_daqmx_DAQmx_Val_Acquired_Into_Buffer 1L
+#undef edu_sju_ee_ni_daqmx_DAQmx_Val_Transferred_From_Buffer
+#define edu_sju_ee_ni_daqmx_DAQmx_Val_Transferred_From_Buffer 2L
 #undef edu_sju_ee_ni_daqmx_DAQmx_Val_GroupByChannel
 #define edu_sju_ee_ni_daqmx_DAQmx_Val_GroupByChannel 0L
 #undef edu_sju_ee_ni_daqmx_DAQmx_Val_GroupByScanNumber
@@ -25,6 +29,10 @@ extern "C" {
 #define edu_sju_ee_ni_daqmx_DAQmx_Val_Rising 10280L
 #undef edu_sju_ee_ni_daqmx_DAQmx_Val_Falling
 #define edu_sju_ee_ni_daqmx_DAQmx_Val_Falling 10171L
+#undef edu_sju_ee_ni_daqmx_DAQmx_Val_CSeriesModule
+#define edu_sju_ee_ni_daqmx_DAQmx_Val_CSeriesModule 14659L
+#undef edu_sju_ee_ni_daqmx_DAQmx_Val_SCXIModule
+#define edu_sju_ee_ni_daqmx_DAQmx_Val_SCXIModule 14660L
 /*
  * Class:     edu_sju_ee_ni_daqmx_DAQmx
  * Method:    construct
@@ -48,22 +56,6 @@ JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_destruct
  */
 JNIEXPORT jboolean JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_isAlive
   (JNIEnv *, jobject);
-
-/*
- * Class:     edu_sju_ee_ni_daqmx_DAQmx
- * Method:    createAIVoltageChan
- * Signature: (Ljava/lang/String;Ljava/lang/String;IDDILjava/lang/String;)V
- */
-JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_createAIVoltageChan
-  (JNIEnv *, jobject, jstring, jstring, jint, jdouble, jdouble, jint, jstring);
-
-/*
- * Class:     edu_sju_ee_ni_daqmx_DAQmx
- * Method:    cfgSampClkTiming
- * Signature: (Ljava/lang/String;DIIJ)V
- */
-JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_cfgSampClkTiming
-  (JNIEnv *, jobject, jstring, jdouble, jint, jint, jlong);
 
 /*
  * Class:     edu_sju_ee_ni_daqmx_DAQmx
@@ -99,11 +91,91 @@ JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_clearTask
 
 /*
  * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    getNthTaskDevice
+ * Signature: (I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_getNthTaskDevice
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    registerEveryNSamplesEvent
+ * Signature: (III)V
+ */
+JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_registerEveryNSamplesEvent
+  (JNIEnv *, jobject, jint, jint, jint);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    registerDoneEvent
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_registerDoneEvent
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    createAIVoltageChan
+ * Signature: (Ljava/lang/String;Ljava/lang/String;IDDILjava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_createAIVoltageChan
+  (JNIEnv *, jobject, jstring, jstring, jint, jdouble, jdouble, jint, jstring);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    createAOVoltageChan
+ * Signature: (Ljava/lang/String;Ljava/lang/String;DDILjava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_createAOVoltageChan
+  (JNIEnv *, jobject, jstring, jstring, jdouble, jdouble, jint, jstring);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    cfgDigEdgeStartTrig
+ * Signature: (Ljava/lang/String;I)V
+ */
+JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_cfgDigEdgeStartTrig
+  (JNIEnv *, jobject, jstring, jint);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
  * Method:    readAnalogF64
  * Signature: (IDZ[DILjava/lang/Boolean;)I
  */
 JNIEXPORT jint JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_readAnalogF64
   (JNIEnv *, jobject, jint, jdouble, jboolean, jdoubleArray, jint, jobject);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    writeAnalogF64
+ * Signature: (IZDZ[D)V
+ */
+JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_writeAnalogF64
+  (JNIEnv *, jobject, jint, jboolean, jdouble, jboolean, jdoubleArray);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    getDevProductCategory
+ * Signature: (Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_getDevProductCategory
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    getTaskNumDevices
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_getTaskNumDevices
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     edu_sju_ee_ni_daqmx_DAQmx
+ * Method:    cfgSampClkTiming
+ * Signature: (Ljava/lang/String;DIIJ)V
+ */
+JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_cfgSampClkTiming
+  (JNIEnv *, jobject, jstring, jdouble, jint, jint, jlong);
 
 /*
  * Class:     edu_sju_ee_ni_daqmx_DAQmx
