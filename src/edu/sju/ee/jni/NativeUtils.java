@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.sju.ee98.ni.daqmx;
+package edu.sju.ee.jni;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -85,10 +85,9 @@
         <echo message="native header" />
         <mkdir dir="./build/header" />
         <javah destdir="./build/header" classpath="./build/classes/">
-            <class name="edu.sju.ee98.ni.daqmx.DAQmx"/>
+            <class name="edu.sju.ee.ni.daqmx.DAQmx"/>
             <class name="edu.sju.ee98.ni.daqmx.analog.AcqIntClk"/>
             <class name="edu.sju.ee98.ni.daqmx.analog.ContGenIntClk"/>
-            <class name="edu.sju.ee.ni.daqmx.TaskHandle"/>
         </javah>
         <copy todir="../DataAcquisitionNative/header">
             <fileset dir="./build/header" />

@@ -4,7 +4,7 @@
  */
 package edu.sju.ee98.ni.daqmx.analog;
 
-import edu.sju.ee98.ni.daqmx.NativeUtils;
+import edu.sju.ee.jni.NativeUtils;
 import edu.sju.ee98.ni.daqmx.config.NIClkTiming;
 import edu.sju.ee98.ni.daqmx.config.NIVoltageChan;
 import edu.sju.ee98.ni.daqmx.data.NIWaveData;

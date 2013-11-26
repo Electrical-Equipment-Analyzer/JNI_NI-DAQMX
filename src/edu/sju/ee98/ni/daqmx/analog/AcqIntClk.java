@@ -4,8 +4,8 @@
  */
 package edu.sju.ee98.ni.daqmx.analog;
 
-import edu.sju.ee98.ni.daqmx.LoadLibraryException;
-import edu.sju.ee98.ni.daqmx.NativeUtils;
+import edu.sju.ee.jni.LoadLibraryException;
+import edu.sju.ee.jni.NativeUtils;
 import edu.sju.ee98.ni.daqmx.config.NIClkTiming;
 import edu.sju.ee98.ni.daqmx.config.NIVoltageChan;
 import java.io.IOException;
