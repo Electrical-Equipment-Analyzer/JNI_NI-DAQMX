@@ -42,32 +42,28 @@ public class SynchAIAO {
             //******************************************************************
             // DAQmx Start Code
             handleAO.startTask();
-//            Thread.sleep(10);
             handleAI.startTask();
 
             Thread.sleep(10000);
-            //******************************************************************
-            // DAQmx Read Code
-//            double data[] = new double[1000];
-//            handleAI.readAnalogF64(1000, 10, DAQmx.Val_GroupByChannel, data, 1000, null);
-//
-//            for (int i = 0; i < data.length; i++) {
-//                System.out.print(data[i] + "\t");
-//            }
-//            System.out.println();
-
-//            handleAI.test();
         } catch (Exception ex) {
             Logger.getLogger(SynchAIAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-//            try {
-//                if (handle.isAlive()) {
-//                    handle.stopTask();
-//                    handle.clearTask();
-//                }
-//            } catch (Exception ex) {
-//                Logger.getLogger(SynchAIAO.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            try {
+                if (handleAI.isAlive()) {
+                    handleAI.stopTask();
+                    handleAI.clearTask();
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(SynchAIAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                if (handleAO.isAlive()) {
+                    handleAO.stopTask();
+                    handleAO.clearTask();
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(SynchAIAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         handleAI = null;
         System.gc();
@@ -76,7 +72,7 @@ public class SynchAIAO {
     public static double[] genSineWave(int numElements, double amplitude, double frequency, double phase) {
         double sineWave[] = new double[numElements];
         for (int i = 0; i < sineWave.length; ++i) {
-            sineWave[i] = amplitude * Math.sin(Math.PI / 180.0 * (phase + 360.0 * frequency * i));
+            sineWave[i] = amplitude * Math.sin(Math.PI * (phase + 360.0 * frequency * i) / 180.0);
         }
         phase = (phase + frequency * 360.0 * numElements) % 360;
         return sineWave;

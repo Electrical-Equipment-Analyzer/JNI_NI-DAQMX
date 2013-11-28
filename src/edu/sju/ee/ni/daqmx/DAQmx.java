@@ -114,4 +114,23 @@ public class DAQmx {
     //Test----------------------------------------------------------------------
     public native void test();
 
+    //**************************************************************************
+    //static
+    public String getTerminalNameWithDevPrefix(String terminalName) {
+        String triggerName = null;
+        int i = 1;
+        int numDevices = this.getTaskNumDevices();
+        while (i <= numDevices) {
+            String device;
+            int productCategory;
+            device = this.getNthTaskDevice(i++);
+            productCategory = this.getDevProductCategory(device);
+            if (productCategory != DAQmx.Val_CSeriesModule && productCategory != DAQmx.Val_SCXIModule) {
+                triggerName = "/" + device + "/" + terminalName;
+                break;
+            }
+        }
+        return triggerName;
+    }
+
 }
