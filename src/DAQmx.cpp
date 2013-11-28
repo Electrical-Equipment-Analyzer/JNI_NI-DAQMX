@@ -1,7 +1,6 @@
 
 #include <windows.h>
 #include <stdio.h>
-#include <NIDAQmx.h>
 #include "edu_sju_ee_ni_daqmx_DAQmx.h"
 #include "NativeUtils.h"
 
@@ -9,8 +8,8 @@ int32 CVICALLBACK TEveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEven
 int32 CVICALLBACK TDoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
 JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_construct(JNIEnv *env, jobject obj) {
-    struct daq *daq_struct = (struct daq *) malloc(sizeof (*daq_struct));
-    (env)->SetLongField(obj, (env)->GetFieldID((env)->GetObjectClass(obj), "nativeStruct", "J"), (jlong) daq_struct);
+    daq *daq_struct = (daq *) malloc(sizeof (*daq_struct));
+    env->SetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "nativeStruct", "J"), (jlong) daq_struct);
     daq_struct->taskHandle = 0;
 }
 
@@ -101,77 +100,11 @@ JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_cfgSampClkTiming
 
 //******************************************************************************
 
-#include <math.h>
-#include <string.h>
-
-static TaskHandle AItaskHandle = 0, AOtaskHandle = 0;
-
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
 JNIEXPORT void JNICALL Java_edu_sju_ee_ni_daqmx_DAQmx_test(JNIEnv *env, jobject obj) {
     struct daq *daq_struct = getStruct(env, obj);
 
-    int32 error = 0;
-    char errBuff[2048] = {'\0'};
-    char trigName[256];
-    float64 AOdata[1000];
-    float64 phase = 0.0;
-
-    /*********************************************/
-    // DAQmx Configure Code
-    /*********************************************/
-
-    DAQmxErrChk(DAQmxCreateTask("", &AItaskHandle));
-    DAQmxErrChk(DAQmxCreateAIVoltageChan(AItaskHandle, "Dev1/ai0", "", DAQmx_Val_Cfg_Default, -10.0, 10.0, DAQmx_Val_Volts, NULL));
-    DAQmxErrChk(DAQmxCfgSampClkTiming(AItaskHandle, "", 10000.0, DAQmx_Val_Rising, DAQmx_Val_ContSamps, 1000));
-
-    //    DAQmxErrChk(GetTerminalNameWithDevPrefix(AItaskHandle, "ai/StartTrigger", trigName));
-
-    DAQmxErrChk(DAQmxCreateTask("", &AOtaskHandle));
-    DAQmxErrChk(DAQmxCreateAOVoltageChan(AOtaskHandle, "Dev1/ao0", "", -10.0, 10.0, DAQmx_Val_Volts, NULL));
-    DAQmxErrChk(DAQmxCfgSampClkTiming(AOtaskHandle, "", 5000.0, DAQmx_Val_Rising, DAQmx_Val_ContSamps, 1000));
-
-    DAQmxErrChk(DAQmxCfgDigEdgeStartTrig(AOtaskHandle, trigName, DAQmx_Val_Rising));
-
-    DAQmxErrChk(DAQmxRegisterEveryNSamplesEvent(AItaskHandle, DAQmx_Val_Acquired_Into_Buffer, 1000, 0, TEveryNCallback, NULL));
-    DAQmxErrChk(DAQmxRegisterDoneEvent(AItaskHandle, 0, TDoneCallback, NULL));
-
-    //    GenSineWave(1000, 2.0, 100.0 / 1000, &phase, AOdata);
-
-    DAQmxErrChk(DAQmxWriteAnalogF64(AOtaskHandle, 1000, FALSE, 10.0, DAQmx_Val_GroupByChannel, AOdata, NULL, NULL));
-
-    /*********************************************/
-    // DAQmx Start Code
-    /*********************************************/
-    DAQmxErrChk(DAQmxStartTask(AOtaskHandle));
-    DAQmxErrChk(DAQmxStartTask(AItaskHandle));
-
-    printf("Acquiring samples continuously. Press Enter to interrupt\n");
-    printf("\nRead:\tAI\tTotal:\tAI\n");
-    getchar();
-
-Error:
-    if (DAQmxFailed(error))
-        DAQmxGetExtendedErrorInfo(errBuff, 2048);
-    if (AItaskHandle) {
-        /*********************************************/
-        // DAQmx Stop Code
-        /*********************************************/
-        DAQmxStopTask(AItaskHandle);
-        DAQmxClearTask(AItaskHandle);
-        AItaskHandle = 0;
-    }
-    if (AOtaskHandle) {
-        /*********************************************/
-        // DAQmx Stop Code
-        /*********************************************/
-        DAQmxStopTask(AOtaskHandle);
-        DAQmxClearTask(AOtaskHandle);
-        AOtaskHandle = 0;
-    }
-    if (DAQmxFailed(error))
-        printf("DAQmx Error: %s\n", errBuff);
-    printf("End of program, press Enter key to quit\n");
     fflush(stdout);
     //	getchar();
     return;

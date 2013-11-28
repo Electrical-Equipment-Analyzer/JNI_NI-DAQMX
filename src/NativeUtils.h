@@ -5,6 +5,9 @@
  * Created on 2013年11月25日, 下午 11:31
  */
 
+#include <NIDAQmx.h>
+#include <jni.h>
+
 #ifndef NATIVEUTILS_H
 #define	NATIVEUTILS_H
 
