@@ -22,7 +22,7 @@ public class AcqIntClk extends AnalogWave {
         try {
             NativeUtils.loadLibraryFromJar("libDAQ");
         } catch (IOException ex) {
-            Logger.getLogger(ContGenIntClk.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AcqIntClk.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

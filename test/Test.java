@@ -1,5 +1,5 @@
 
-import analogIn.measureVoltage.Acq_IntClk;
+import analog.in.measure.voltage.Acq_IntClk;
 import edu.sju.ee.ni.daqmx.DAQmx;
 import java.util.logging.Level;
 import java.util.logging.Logger;

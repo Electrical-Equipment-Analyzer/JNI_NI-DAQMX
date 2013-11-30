@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package analogIn.measureVoltage;
+package analog.in.measure.voltage;
 
 import edu.sju.ee.ni.daqmx.DAQmx;
 import java.util.logging.Level;
@@ -23,7 +23,7 @@ public class Acq_IntClk {
             //******************************************************************
             // DAQmx Configure Code
             handle.createTask("");
-            handle.createAIVoltageChan("Dev1/ai1", "", DAQmx.Val_Cfg_Default, -10.0, 10.0, DAQmx.Val_Volts, null);
+            handle.createAIVoltageChan("Dev1/ai0", "", DAQmx.Val_Cfg_Default, -10.0, 10.0, DAQmx.Val_Volts, null);
             handle.cfgSampClkTiming("", 10000.0, DAQmx.Val_Rising, DAQmx.Val_FiniteSamps, 1000);
 
             //******************************************************************
@@ -52,7 +52,6 @@ public class Acq_IntClk {
                 Logger.getLogger(Acq_IntClk.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-//        daQmx.test();
         handle = null;
         System.gc();
     }
