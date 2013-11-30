@@ -36,9 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/DAQmx.o \
-	${OBJECTDIR}/src/NativeUtils.o \
-	${OBJECTDIR}/src/analog/Acq-IntClk.o \
-	${OBJECTDIR}/src/analog/ContGen-IntClk.o
+	${OBJECTDIR}/src/NativeUtils.o
 
 
 # C Compiler Flags
@@ -74,16 +72,6 @@ ${OBJECTDIR}/src/NativeUtils.o: src/NativeUtils.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32 -Iheader  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/NativeUtils.o src/NativeUtils.cpp
-
-${OBJECTDIR}/src/analog/Acq-IntClk.o: src/analog/Acq-IntClk.c 
-	${MKDIR} -p ${OBJECTDIR}/src/analog
-	${RM} $@.d
-	$(COMPILE.c) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32 -Iheader  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/Acq-IntClk.o src/analog/Acq-IntClk.c
-
-${OBJECTDIR}/src/analog/ContGen-IntClk.o: src/analog/ContGen-IntClk.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/analog
-	${RM} $@.d
-	$(COMPILE.cc) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32 -Iheader  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/analog/ContGen-IntClk.o src/analog/ContGen-IntClk.cpp
 
 # Subprojects
 .build-subprojects:

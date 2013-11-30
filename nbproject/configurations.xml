@@ -12,8 +12,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>src/analog/Acq-IntClk.c</itemPath>
-      <itemPath>src/analog/ContGen-IntClk.cpp</itemPath>
       <itemPath>src/DAQmx.cpp</itemPath>
       <itemPath>src/NativeUtils.cpp</itemPath>
       <itemPath>src/NativeUtils.h</itemPath>
@@ -88,10 +86,6 @@
       </item>
       <item path="src/NativeUtils.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/analog/Acq-IntClk.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="src/analog/ContGen-IntClk.cpp" ex="false" tool="1" flavor2="0">
-      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -118,10 +112,6 @@
       <item path="src/NativeUtils.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/NativeUtils.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/analog/Acq-IntClk.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="src/analog/ContGen-IntClk.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
