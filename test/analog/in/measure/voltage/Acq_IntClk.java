@@ -17,8 +17,7 @@ public class Acq_IntClk {
 
     public static void main(String[] args) {
 
-        DAQmx handle;
-        handle = new DAQmx();
+        DAQmx handle = new DAQmx();
         try {
             //******************************************************************
             // DAQmx Configure Code

@@ -2,15 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.sju.ee98.ni.daqmx.analog;
-
-import edu.sju.ee98.ni.daqmx.data.NIWaveData;
+package edu.sju.ee.ni.math;
 
 /**
  *
  * @author Leo
  */
-public class AnalogGenerator implements NIWaveData {
+public class WaveGenerator {
 
     private double[] data;
     private double rate;
@@ -19,11 +17,11 @@ public class AnalogGenerator implements NIWaveData {
     private double frequency;
     private double position;
 
-    public AnalogGenerator(double rate, int length, double voltage, double frequency) {
+    public WaveGenerator(double rate, int length, double voltage, double frequency) {
         this(rate, length, voltage, frequency, 0);
     }
 
-    public AnalogGenerator(double rate, int length, double voltage, double frequency, double position) {
+    public WaveGenerator(double rate, int length, double voltage, double frequency, double position) {
         this.rate = rate;
         this.length = length;
         this.voltage = voltage;
@@ -39,12 +37,10 @@ public class AnalogGenerator implements NIWaveData {
         }
     }
 
-    @Override
     public double[] getData() {
         return this.data;
     }
 
-    @Override
     public double getRate() {
         return this.rate;
     }
