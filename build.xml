@@ -75,7 +75,6 @@
     <target name="-post-clean">
         <delete>
             <fileset dir="../DataAcquisitionNative/header/" includes="*"/>
-            <fileset dir="binary/native/64/windows/" includes="*"/>
         </delete>
     </target>
     
@@ -94,9 +93,6 @@
         <exec executable="bash">
             <arg value="buildnative.sh"/>
         </exec>
-        <copy todir="build/classes">
-            <fileset dir="binary" />
-        </copy>
     </target>
     
 </project>
