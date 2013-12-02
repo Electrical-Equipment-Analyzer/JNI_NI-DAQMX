@@ -57,7 +57,8 @@ build: .build-post
 # Add your pre 'build' code here...
 
 .build-post: .build-impl
-	cp dist/Debug/TDM_GCC-Windows/libDAQ.dll ../DataAcquisitionJNI/binary/native/64/windows/
+	mkdir -p ../DataAcquisitionJNI/build/classes/native/64/windows/
+	cp dist/Debug/TDM_GCC-Windows/libDAQ.dll ../DataAcquisitionJNI/build/classes/native/64/windows/
 # Add your post 'build' code here...
 
 
