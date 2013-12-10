@@ -90,8 +90,7 @@
             <fileset dir="./build/header" />
         </copy>
         <echo message="build native" />
-        <exec executable="bash">
-            <arg value="buildnative.sh"/>
+        <exec dir="../DataAcquisitionNative" executable="mingw32-make.exe">
         </exec>
     </target>
     
