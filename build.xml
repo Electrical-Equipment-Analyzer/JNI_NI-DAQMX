@@ -73,25 +73,28 @@
     -->
     
     <target name="-post-clean">
-        <delete>
-            <fileset dir="../DataAcquisitionNative/header/" includes="*"/>
-        </delete>
+        <delete dir="${binary.dir}/../${native.title}/header" quiet="true"/>
+        <exec dir="../${native.title}" executable="mingw32-make.exe" >
+            <arg value="clean"/>
+        </exec>
     </target>
     
     <target name="-post-compile">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
         <echo message="native header" />
-        <mkdir dir="./build/header" />
-        <javah destdir="./build/header" classpath="./build/classes/">
+        <mkdir dir="${binary.dir}/../${native.title}/header" />
+        <javah destdir="${binary.dir}/../${native.title}/header" classpath="${build.dir}/classes/">
             <class name="edu.sju.ee.ni.daqmx.DAQmx"/>
         </javah>
-        <copy todir="../DataAcquisitionNative/header">
-            <fileset dir="./build/header" />
-        </copy>
         <echo message="build native" />
-        <exec dir="../DataAcquisitionNative" executable="mingw32-make.exe">
-        </exec>
+        <exec dir="../${native.title}" executable="mingw32-make.exe" />
+    </target>
+
+    <target name="-pre-jar">
+        <copy todir="${build.dir}/classes/native/64/windows">
+            <fileset dir="${binary.dir}/../${native.title}/dist/Debug/MinGW_TDM-Windows" />
+        </copy>
     </target>
     
 </project>
