@@ -57,8 +57,6 @@ build: .build-post
 # Add your pre 'build' code here...
 
 .build-post: .build-impl
-	mkdir -p ../DataAcquisitionJNI/build/classes/native/64/windows/
-	cp dist/Debug/TDM_GCC-Windows/libDAQ.dll ../DataAcquisitionJNI/build/classes/native/64/windows/
 # Add your post 'build' code here...
 
 
@@ -128,3 +126,7 @@ include nbproject/Makefile-impl.mk
 
 # include project make variables
 include nbproject/Makefile-variables.mk
+
+BINARY_DIR=R:/netbeans/${PROJECTNAME}
+CND_DISTDIR=${BINARY_DIR}/dist
+CND_BUILDDIR=${BINARY_DIR}/build

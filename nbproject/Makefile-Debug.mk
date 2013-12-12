@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=TDM_GCC-Windows
+CND_PLATFORM=MinGW_TDM-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -65,13 +65,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libDAQ.${CND_DLIB_EXT}: ${OBJECTFILES
 
 ${OBJECTDIR}/src/DAQmx.o: src/DAQmx.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32 -Iheader  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.cpp
+	$(COMPILE.cc) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32 -I${BINARY_DIR}/header  -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.cpp
 
 ${OBJECTDIR}/src/NativeUtils.o: src/NativeUtils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32 -Iheader  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/NativeUtils.o src/NativeUtils.cpp
+	$(COMPILE.cc) -g -Iinclude/NI -Iinclude/java -Iinclude/java/win32 -I${BINARY_DIR}/header  -o ${OBJECTDIR}/src/NativeUtils.o src/NativeUtils.cpp
 
 # Subprojects
 .build-subprojects:
@@ -83,8 +81,3 @@ ${OBJECTDIR}/src/NativeUtils.o: src/NativeUtils.cpp
 
 # Subprojects
 .clean-subprojects:
-
-# Enable dependency checking
-.dep.inc: .depcheck-impl
-
-include .dep.inc

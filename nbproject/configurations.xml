@@ -35,8 +35,8 @@
   <confs>
     <conf name="Debug" type="2">
       <toolsSet>
-        <compilerSet>TDM_GCC|MinGW_TDM</compilerSet>
-        <dependencyChecking>true</dependencyChecking>
+        <compilerSet>MinGW_TDM|MinGW_TDM</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
@@ -45,7 +45,7 @@
             <pElem>include/NI</pElem>
             <pElem>include/java</pElem>
             <pElem>include/java/win32</pElem>
-            <pElem>header</pElem>
+            <pElem>${BINARY_DIR}/header</pElem>
           </incDir>
         </cTool>
         <ccTool>
@@ -53,7 +53,7 @@
             <pElem>include/NI</pElem>
             <pElem>include/java</pElem>
             <pElem>include/java/win32</pElem>
-            <pElem>header</pElem>
+            <pElem>${BINARY_DIR}/header</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
