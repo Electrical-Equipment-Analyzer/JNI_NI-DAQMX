@@ -54,7 +54,7 @@ JAVA_HOME=C:/Program Files/Java/jdk1.7.0_45
 JAVAH=$(JAVA_HOME)/bin/javah
 JAVAH_CLASSPATH=$(TARGET_DIR)/classes
 JAVAH_FLAGS = -jni
-JAVAH_FLAGS += -d $(TARGET_DIR)\header
+JAVAH_FLAGS += -d $(TARGET_DIR)/header
 JAVAH_FLAGS += -classpath $(JAVAH_CLASSPATH)
 
 JAVA_CLASS_NATIVE=$(TARGET_DIR)/classes/native/64/windows/
