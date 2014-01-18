@@ -1,9 +1,9 @@
 package edu.sju.ee.eea.jni.daqmx;
 
-import edu.sju.ee.eea.jni.NativeUtils;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tw.edu.sju.ee.commons.nativeutils.NativeUtils;
 
 /*
  * To change this template, choose Tools | Templates
