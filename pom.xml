@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.sju.ee.eea</groupId>
+    <groupId>tw.edu.sju.ee.eea.jni</groupId>
     <artifactId>jni-daqmx</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>sju-daq.jni-daqmx</name>
-    <url>http://maven.apache.org</url>
+    <url>http://</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

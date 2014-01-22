@@ -1,4 +1,4 @@
-package edu.sju.ee.eea.jni.daqmx;
+package tw.edu.sju.ee.eea.jni.daqmx;
 
 import java.io.IOException;
 import java.util.logging.Level;

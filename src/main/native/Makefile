@@ -51,24 +51,25 @@ CCADMIN=CCadmin
 
 TARGET_DIR=../../../target
 JAVA_HOME=C:/Program Files/Java/jdk1.7.0_45
-JAVAH=$(JAVA_HOME)/bin/javah
-JAVAH_CLASSPATH=$(TARGET_DIR)/classes
-JAVAH_FLAGS = -jni
-JAVAH_FLAGS += -d $(TARGET_DIR)/header
-JAVAH_FLAGS += -classpath $(JAVAH_CLASSPATH)
 
-JAVA_CLASS_NATIVE=$(TARGET_DIR)/classes/native/64/windows/
+JAVAH=${JAVA_HOME}/bin/javah
+JAVAH_CLASSPATH=${TARGET_DIR}/classes
+JAVAH_FLAGS = -jni
+JAVAH_FLAGS += -d ${TARGET_DIR}/header
+JAVAH_FLAGS += -classpath ${JAVAH_CLASSPATH}
+
+JAVA_CLASS_NATIVE=${TARGET_DIR}/classes/native/64/windows/
 
 # build
 build: .build-post
 
 .build-pre:
-	$(JAVAH) $(JAVAH_FLAGS) edu.sju.ee.eea.jni.daqmx.DAQmx
+	${JAVAH} ${JAVAH_FLAGS} tw.edu.sju.ee.eea.jni.daqmx.DAQmx
 # Add your pre 'build' code here...
 
 .build-post: .build-impl
-	$(MKDIR) -p $(JAVA_CLASS_NATIVE)
-	$(CP) ${CND_DISTDIR}/*/*/jni_DAQmx.* $(JAVA_CLASS_NATIVE)
+	${MKDIR} -p ${JAVA_CLASS_NATIVE}
+	${CP} ${CND_DISTDIR}/*/*/* ${JAVA_CLASS_NATIVE}
 # Add your post 'build' code here...
 
 
