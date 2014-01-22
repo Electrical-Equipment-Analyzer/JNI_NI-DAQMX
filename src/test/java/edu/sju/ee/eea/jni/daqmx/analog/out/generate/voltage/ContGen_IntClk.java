@@ -5,8 +5,8 @@
  */
 package edu.sju.ee.eea.jni.daqmx.analog.out.generate.voltage;
 
-import edu.sju.ee.eea.jni.daqmx.DAQmx;
-import edu.sju.ee.eea.math.WaveGenerator;
+import tw.edu.sju.ee.eea.jni.daqmx.DAQmx;
+import tw.edu.sju.ee.eea.math.WaveGenerator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import junit.framework.TestCase;

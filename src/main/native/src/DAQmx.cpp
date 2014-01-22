@@ -1,74 +1,74 @@
 
 #include <windows.h>
 #include <stdio.h>
-#include "edu_sju_ee_eea_jni_daqmx_DAQmx.h"
+#include "tw_edu_sju_ee_eea_jni_daqmx_DAQmx.h"
 #include "NativeUtils.h"
 
 int32 CVICALLBACK TEveryNCallback(TaskHandle taskHandle, int32 everyNsamplesEventType, uInt32 nSamples, void *callbackData);
 int32 CVICALLBACK TDoneCallback(TaskHandle taskHandle, int32 status, void *callbackData);
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_construct(JNIEnv *env, jobject obj) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_construct(JNIEnv *env, jobject obj) {
     daq *daq_struct = (daq *) malloc(sizeof (*daq_struct));
     env->SetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "nativeStruct", "J"), (jlong) daq_struct);
     daq_struct->taskHandle = 0;
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_destruct(JNIEnv *env, jobject obj) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_destruct(JNIEnv *env, jobject obj) {
     printf("native destruct\n");
     struct daq *daq_struct = getStruct(env, obj);
     daq_struct->taskHandle = 0;
     free(daq_struct);
 }
 
-JNIEXPORT jboolean JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_isAlive(JNIEnv *env, jobject obj) {
+JNIEXPORT jboolean JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_isAlive(JNIEnv *env, jobject obj) {
     return (getStruct(env, obj)->taskHandle != 0);
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_createTask(JNIEnv *env, jobject obj, jstring taskName) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_createTask(JNIEnv *env, jobject obj, jstring taskName) {
     errorCheck(env, obj, DAQmxCreateTask(toChars(env, taskName), &getStruct(env, obj)->taskHandle));
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_startTask(JNIEnv *env, jobject obj) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_startTask(JNIEnv *env, jobject obj) {
     errorCheck(env, obj, DAQmxStartTask(getStruct(env, obj)->taskHandle));
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_stopTask(JNIEnv *env, jobject obj) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_stopTask(JNIEnv *env, jobject obj) {
     errorCheck(env, obj, DAQmxStopTask(getStruct(env, obj)->taskHandle));
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_clearTask(JNIEnv *env, jobject obj) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_clearTask(JNIEnv *env, jobject obj) {
     errorCheck(env, obj, DAQmxClearTask(getStruct(env, obj)->taskHandle));
 }
 
-JNIEXPORT jstring JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_getNthTaskDevice(JNIEnv *env, jobject obj, jint index) {
+JNIEXPORT jstring JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_getNthTaskDevice(JNIEnv *env, jobject obj, jint index) {
     char device[256];
     errorCheck(env, obj, DAQmxGetNthTaskDevice(getStruct(env, obj)->taskHandle, index, device, 256));
     return env->NewStringUTF(device);
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_registerEveryNSamplesEvent(JNIEnv *env, jobject obj, jint everyNsamplesEventType, jint nSamples, jint options) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_registerEveryNSamplesEvent(JNIEnv *env, jobject obj, jint everyNsamplesEventType, jint nSamples, jint options) {
     errorCheck(env, obj, DAQmxRegisterEveryNSamplesEvent(getStruct(env, obj)->taskHandle, everyNsamplesEventType, nSamples, options, TEveryNCallback, NULL));
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_registerDoneEvent(JNIEnv *env, jobject obj, jint options) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_registerDoneEvent(JNIEnv *env, jobject obj, jint options) {
     errorCheck(env, obj, DAQmxRegisterDoneEvent(getStruct(env, obj)->taskHandle, options, TDoneCallback, NULL));
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_createAIVoltageChan
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_createAIVoltageChan
 (JNIEnv *env, jobject obj, jstring physicalChannel, jstring nameToAssignToChannel, jint terminalConfig, jdouble minVal, jdouble maxVal, jint units, jstring customScaleName) {
     errorCheck(env, obj, DAQmxCreateAIVoltageChan(getStruct(env, obj)->taskHandle, toChars(env, physicalChannel), toChars(env, nameToAssignToChannel), terminalConfig, minVal, maxVal, units, toChars(env, customScaleName)));
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_createAOVoltageChan
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_createAOVoltageChan
 (JNIEnv *env, jobject obj, jstring physicalChannel, jstring nameToAssignToChannel, jdouble minVal, jdouble maxVal, jint units, jstring customScaleName) {
     errorCheck(env, obj, DAQmxCreateAOVoltageChan(getStruct(env, obj)->taskHandle, toChars(env, physicalChannel), toChars(env, nameToAssignToChannel), minVal, maxVal, units, toChars(env, customScaleName)));
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_cfgDigEdgeStartTrig(JNIEnv *env, jobject obj, jstring triggerSource, jint triggerEdge) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_cfgDigEdgeStartTrig(JNIEnv *env, jobject obj, jstring triggerSource, jint triggerEdge) {
     errorCheck(env, obj, DAQmxCfgDigEdgeStartTrig(getStruct(env, obj)->taskHandle, toChars(env, triggerSource), triggerEdge));
 }
 
-JNIEXPORT jint JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_readAnalogF64
+JNIEXPORT jint JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_readAnalogF64
 (JNIEnv *env, jobject obj, jint numSampsPerChan, jdouble timeout, jboolean fillMode, jdoubleArray readArray, jint arraySizeInSamps, jobject reserved) {
     int32 read;
     float64 data[arraySizeInSamps];
@@ -77,23 +77,23 @@ JNIEXPORT jint JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_readAnalogF64
     return read;
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_writeAnalogF64(JNIEnv *env, jobject obj, jint numSampsPerChan, jboolean autoStart, jdouble timeout, jboolean dataLayout, jdoubleArray writeArray) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_writeAnalogF64(JNIEnv *env, jobject obj, jint numSampsPerChan, jboolean autoStart, jdouble timeout, jboolean dataLayout, jdoubleArray writeArray) {
     errorCheck(env, obj, DAQmxWriteAnalogF64(getStruct(env, obj)->taskHandle, numSampsPerChan, autoStart, timeout, dataLayout, env->GetDoubleArrayElements(writeArray, JNI_FALSE), NULL, NULL));
 }
 
-JNIEXPORT jint JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_getDevProductCategory(JNIEnv *env, jobject obj, jstring device) {
+JNIEXPORT jint JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_getDevProductCategory(JNIEnv *env, jobject obj, jstring device) {
     int32 productCategory;
     errorCheck(env, obj, DAQmxGetDevProductCategory(toChars(env, device), &productCategory));
     return productCategory;
 }
 
-JNIEXPORT jint JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_getTaskNumDevices(JNIEnv *env, jobject obj) {
+JNIEXPORT jint JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_getTaskNumDevices(JNIEnv *env, jobject obj) {
     uInt32 numDevices;
     errorCheck(env, obj, DAQmxGetTaskNumDevices(getStruct(env, obj)->taskHandle, &numDevices));
     return numDevices;
 }
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_cfgSampClkTiming
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_cfgSampClkTiming
 (JNIEnv *env, jobject obj, jstring source, jdouble rate, jint activeEdge, jint sampleMode, jlong sampsPerChan) {
     errorCheck(env, obj, DAQmxCfgSampClkTiming(getStruct(env, obj)->taskHandle, toChars(env, source), rate, activeEdge, sampleMode, sampsPerChan));
 }
@@ -102,7 +102,7 @@ JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_cfgSampClkTiming
 
 #define DAQmxErrChk(functionCall) if( DAQmxFailed(error=(functionCall)) ) goto Error; else
 
-JNIEXPORT void JNICALL Java_edu_sju_ee_eea_jni_daqmx_DAQmx_test(JNIEnv *env, jobject obj) {
+JNIEXPORT void JNICALL Java_tw_edu_sju_ee_eea_jni_daqmx_DAQmx_test(JNIEnv *env, jobject obj) {
     struct daq *daq_struct = getStruct(env, obj);
 
     fflush(stdout);

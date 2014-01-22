@@ -5,7 +5,7 @@
  */
 package edu.sju.ee.eea.jni.daqmx.analog.in.measure.voltage;
 
-import edu.sju.ee.eea.jni.daqmx.DAQmx;
+import tw.edu.sju.ee.eea.jni.daqmx.DAQmx;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import junit.framework.TestCase;

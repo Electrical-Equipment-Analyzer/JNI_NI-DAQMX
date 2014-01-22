@@ -8,7 +8,12 @@
     <packaging>jar</packaging>
 
     <name>sju-daq.jni-daqmx</name>
-    <url>http://</url>
+
+    <parent>
+        <groupId>tw.edu.sju.ee.eea</groupId>
+        <artifactId>eea-parent</artifactId>
+        <version>1.0</version>
+    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,7 +58,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>tw.edu.sju.ee</groupId>
+            <groupId>tw.edu.sju.ee.eea.commons</groupId>
             <artifactId>commons-nativeutils</artifactId>
             <version>1.0</version>
             <type>jar</type>
