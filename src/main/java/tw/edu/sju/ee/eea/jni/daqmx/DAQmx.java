@@ -3,7 +3,7 @@ package tw.edu.sju.ee.eea.jni.daqmx;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import tw.edu.sju.ee.commons.nativeutils.NativeUtils;
+import tw.edu.sju.ee.eea.jni.util.NativeUtils;
 
 /*
  * To change this template, choose Tools | Templates

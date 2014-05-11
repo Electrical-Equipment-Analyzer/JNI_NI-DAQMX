@@ -25,6 +25,7 @@
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Env-variables.mk</itemPath>
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
@@ -40,31 +41,22 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
-        <cTool>
-          <incDir>
-            <pElem>include/java</pElem>
-            <pElem>include/java/win32</pElem>
-            <pElem>include/NI</pElem>
-            <pElem>${TARGET_DIR}/header</pElem>
-          </incDir>
-        </cTool>
         <ccTool>
           <incDir>
-            <pElem>include/java</pElem>
-            <pElem>include/java/win32</pElem>
-            <pElem>include/NI</pElem>
-            <pElem>${TARGET_DIR}/header</pElem>
+            <pElem>../../../target/header</pElem>
+            <pElem>C:/Program Files/Java/jdk1.7.0_55/include</pElem>
+            <pElem>C:/Program Files/Java/jdk1.7.0_55/include/win32</pElem>
+            <pElem>C:/Program Files (x86)/National Instruments/Shared/ExternalCompilerSupport/C/include</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/jni_DAQmx.${CND_DLIB_EXT}</output>
           <linkerAddLib>
-            <pElem>lib</pElem>
+            <pElem>C:/Windows/System32</pElem>
           </linkerAddLib>
           <commandlineTool>gcc</commandlineTool>
           <linkerLibItems>
             <linkerLibLibItem>nicaiu</linkerLibLibItem>
-            <linkerLibLibItem>stdc++_64-6</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -101,7 +93,7 @@
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>MinGW_TDM|MinGW_TDM</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -111,6 +103,12 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>${TARGET_DIR}/header</pElem>
+            <pElem>${JAVA_HOME}/include</pElem>
+            <pElem>${JAVA_HOME}/include/win32</pElem>
+            <pElem>${NI_ExternalCompilerSupport}/C/include</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -118,6 +116,15 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/jni_DAQmx.${CND_DLIB_EXT}</output>
+          <linkerAddLib>
+            <pElem>${NI_ExternalCompilerSupport}/C/lib64/msvc</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>NIDAQmx</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="src/DAQmx.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -17,8 +17,8 @@ CND_PACKAGE_PATH_Debug=${TARGET_DIR}/Debug/MinGW_TDM-Windows/package/libnative.d
 # Release configuration
 CND_PLATFORM_Release=MinGW_TDM-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW_TDM-Windows
-CND_ARTIFACT_NAME_Release=libnative.dll
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW_TDM-Windows/libnative.dll
+CND_ARTIFACT_NAME_Release=jni_DAQmx.dll
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW_TDM-Windows/jni_DAQmx.dll
 CND_PACKAGE_DIR_Release=dist/Release/MinGW_TDM-Windows/package
 CND_PACKAGE_NAME_Release=libnative.dll.tar
 CND_PACKAGE_PATH_Release=dist/Release/MinGW_TDM-Windows/package/libnative.dll.tar

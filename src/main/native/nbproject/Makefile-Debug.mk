@@ -53,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Llib -lnicaiu -lstdc++_64-6
+LDLIBSOPTIONS=-L/C/Windows/System32 -lnicaiu
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -65,11 +65,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/jni_DAQmx.${CND_DLIB_EXT}: ${OBJECTFI
 
 ${OBJECTDIR}/src/DAQmx.o: src/DAQmx.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
-	$(COMPILE.cc) -g -Iinclude/java -Iinclude/java/win32 -Iinclude/NI -I${TARGET_DIR}/header  -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.cpp
+	$(COMPILE.cc) -g -I../../../target/header -I/C/Program\ Files/Java/jdk1.7.0_55/include -I/C/Program\ Files/Java/jdk1.7.0_55/include/win32 -I/C/Program\ Files\ \(x86\)/National\ Instruments/Shared/ExternalCompilerSupport/C/include  -o ${OBJECTDIR}/src/DAQmx.o src/DAQmx.cpp
 
 ${OBJECTDIR}/src/NativeUtils.o: src/NativeUtils.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
-	$(COMPILE.cc) -g -Iinclude/java -Iinclude/java/win32 -Iinclude/NI -I${TARGET_DIR}/header  -o ${OBJECTDIR}/src/NativeUtils.o src/NativeUtils.cpp
+	$(COMPILE.cc) -g -I../../../target/header -I/C/Program\ Files/Java/jdk1.7.0_55/include -I/C/Program\ Files/Java/jdk1.7.0_55/include/win32 -I/C/Program\ Files\ \(x86\)/National\ Instruments/Shared/ExternalCompilerSupport/C/include  -o ${OBJECTDIR}/src/NativeUtils.o src/NativeUtils.cpp
 
 # Subprojects
 .build-subprojects:
