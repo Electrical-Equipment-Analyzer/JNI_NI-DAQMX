@@ -53,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L${NI_ExternalCompilerSupport}/C/lib64/msvc -lNIDAQmx
+LDLIBSOPTIONS=-L${NI_ExternalCompilerSupport}/C/lib64/msvc -lnicaiu
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

@@ -38,7 +38,7 @@ public class Acq_IntClk extends TestCase {
             //******************************************************************
             // DAQmx Configure Code
             handle.createTask("");
-            handle.createAIVoltageChan("Dev1/ai0", "", DAQmx.Val_Cfg_Default, -10.0, 10.0, DAQmx.Val_Volts, null);
+            handle.createAIVoltageChan("cDAQ9191-16DB947Mod1/ai0", "", DAQmx.Val_Cfg_Default, -10.0, 10.0, DAQmx.Val_Volts, null);
             handle.cfgSampClkTiming("", 10000.0, DAQmx.Val_Rising, DAQmx.Val_FiniteSamps, 1000);
 
             //******************************************************************
